@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'ChineseFont';
+    src: url('./font/Uranus_Pixel_11Px.ttf');  /* 字体文件地址*/
+    unicode-range: U+4E00-9FFF; /* 设置中文字体的 Unicode 范围 */
+}
+  
+
+body {
+    font-family: 'ChineseFont', 'EnglishFont', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    background-color: #f4f3f0;
+    background-size: cover;
+    position: relative;
+}
+
+
+#header {
+    /* background-color: blueviolet; */
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 16px;
+    position: absolute;
+    z-index: 2;
+
+    display: flex;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px 4px 8px;
+}
+
+#header > .container.left {
+    background-color: rgba(180, 180, 180, 0.4);
+    backdrop-filter: blur(10px);
+
+    height: 40px;
+    padding: 4px 4px 4px 4px;    
+    border-radius: 10px;
+    flex: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+}
+
+#header > .container.right {
+    /* background-color: green; */
+    padding: 0;
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#header > .container.add {
+    margin-left: 6px;
+}
+
+#header button {
+    border-radius: 6px;
+    height: 32px;
+    border: none;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#header > .container.left button {
+    background-color: #fff0;
+    color: black;
+}
+
+#header > .container.left button:hover {
+    background-color: rgba(180, 180, 180, 0.95);
+}
+
+#header > .container.left button:active  {
+    background-color: #f4f3f0;
+    color: black;
+}
+
+#header > .container.right button {
+    background-color: purple;   
+    color: white;
+}
+
+#header > .container.right button:hover {
+    background-color: rgba(180, 180, 180, 0.95);
+    color: black;
+}
+
+#header > .container.right button:active  {
+    background-color: rgb(165, 123, 165);
+    color: black;
+}

@@ -30,9 +30,66 @@
     <meta name="theme-color" content="#ffffff">
 
     <style>
-        
+        #blog-content {
+            /* background-color: #f49899; */
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
 
-        
+            font-family: 'ChineseFont', 'Pixelify Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        #blog-content h1 {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 3;
+        }
+
+        #blog-content h2 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        #blog-content p {
+            margin-top: 12px;
+        }
+
+        .tag {
+            background-color: rgba(180, 180, 180, 0.4);
+            font-size: 14px;
+            padding: 4px 8px 4px 8px;
+            border-radius: 6px;
+        }
+
+        .author {
+            background: linear-gradient(45deg, #ed6c91, #4950f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .separator {
+            text-align: center;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        #blog-content > .container {
+            /* background-color: aqua; */
+            position: relative;
+            width: 540px;
+            top: 100px;
+        }
+
+        @media (max-width: 540px) {
+            #blog-content > .container {
+                width: auto;
+            }
+        }
 
     </style>
 </head>
@@ -62,7 +119,37 @@
         </div>
     </section>
 
-   
+   <!-- Blog-content -->
+    <section id="blog-content">
+        <div class="container">
+            <h1>Blog</h1>
+            
+            <div class="content" id="24040801">
+                <h2>04.08.24</h2>
+                <span class="tag"><span class="author">希比</span></span> <span class="tag">开发日志</span>
+                <p>
+                    今天花了一上午中午彻底搞懂position；上下左右；z-index；width/height；flexbox…这么多乱七八糟的怎么协同排版了。就为了把佳比的照片放在正中间。也怪我没有好好阅读文档，就一个劲的试，试出来换一个又不会了…
+                    <br />
+                    然后是亲亲特效，玩儿了半天，真的好玩儿，真佩服我自己～Javascript也懒得上课学，AI帮了我好多，不过就像高中做物理题，上课一点儿没听，抄了一份作业感觉就会了50%了嘻嘻            
+                </p>
+            </div>
+
+            <div class="separator">
+                &#x1F437&#x1F437&#x1F437
+            </div>
+
+            <div class="content" id="24040802">
+                <h2>04.08.24</h2>
+                <span class="tag"><span class="author">希比</span></span> <span class="tag">开发日志</span>
+                <p>
+                    这个blog暂时还没有写blog的功能，因为这是个静态网站，没有数据交互，因为我不会写后端！
+                    <br />
+                    所以只能在我这边输入喔！
+                </p>
+            </div>
+
+        </div> 
+    </section>
 
 </body>
 

@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Test Page</title> 
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+      
+        #photo {
+          /* background-color: coral; */
+          position: fixed;
+          width: 100vw;
+          height: 100vh;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      
+        #photo > .container {
+          background-color: rgba(93, 69, 203, 0.6);
+          position: relative;
+          height: 100%;
+          width: auto;
+          
+          overflow: hidden; /* 清除浮动 */
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      
+        #jiabi-photo {
+          width: auto;
+          height: 100%;
+    
+          float: left; /* 图像浮动 */
+          z-index: -2;
+        }
+      
+        #photo-container {
+          /* background-color: rgba(175, 97, 97, 0.6); */
+          position: absolute;
+
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+        }
+        
+      </style>
+</head> 
+
+<body> 
+    <section id="photo">
+        <div class="container">
+            <img src="./image/jiabi.jpg" alt="jiabi" id="jiabi-photo">
+            <div id="photo-container"></div>
+        </div>
+    </section>
+</body> 
+</html>

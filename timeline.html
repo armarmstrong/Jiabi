@@ -1,270 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" background-color: #f4f3f0>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>jiabi</title>
 
-    <link rel="stylesheet" href="./font/iconfont.css">
     <!-- 引入字体图标库 -->
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <!-- 引入Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <!-- 引入js -->
+    <script src="./script.js"></script>
+
+    <!-- 引入css -->
+    <link rel="stylesheet" href="./header-style.css">
+
+    <!-- 加入ico -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .main {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            position: relative;
-            background-color: cornflowerblue;
-            overflow: hidden;
-        }
-
-        .iconfont {
-            width: 80px;
-            height: 80px;
-            position: absolute;
-            left: 27%;
-            z-index: 999;
-            font: 900 80px "";
-            color: white;
-        }
-
-        #up-btn {
-            top: 5%;
-        }
-
-        #down-btn {
-            bottom: 5%;
-        }
-
-        #content {
-            width: 30%;
-            height: 100%;
-            position: absolute;
-            left: 15%;
-            overflow: hidden;
-        }
-
-        .card {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            color: white;
-            transition: transform 0.8s ease-in-out;
-        }
-
-        .card-time {
-            font-size: 40px;
-            font-weight: 700;
-        }
-
-        .card-title {
-            font-size: 50px;
-            font-weight: 500;
-            padding-bottom: 10px;
-            border-bottom: 1px solid white;
-            margin-bottom: 10px;
-        }
-
-        .card-passage {
-            font-size: 24px;
-            font-weight: 300;
-        }
-
-        #clock {
-            height: 130%;
-            aspect-ratio: 1 / 1; /* 宽高比 */
-            position: absolute;
-            right: -28%;
-            top: -15%;
-            border-radius: 50%;
-            background-color: white;
-            border: black 2px solid;
-        }
-
-        @media (max-width: 1000px) {
-            #clock {
-                right: -90%;
-            }
-        }
-
-        #clock-table {
-            width: 96%;
-            height: 96%;
-            border-radius: 50%;
-            position: absolute;
-            top: 2%;
-            left: 2%;
-            transition: transform 0.8s ease-in-out;
-        }
-
-        .invisible-table {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            transform-origin: 50% 50%;
-            position: absolute;
-        }
         
-        .clock-thick {
-            width: 6%;
-            height: 6px;
-            background-color: black;
-            position: absolute;
-            top: calc(50% - 3px);
-            left: 0px;
-        }
 
-        .clock-thick span {
-            font-size: 50px;
-            position: absolute;
-            left: 140%;
-            top: calc(50% - 30px);
-            color: red ;
-        }
+        
 
-        .clock-scale {
-            width: 4%;
-            height: 2px;
-            background-color: purple;
-            position: absolute;
-            top: calc(50% - 0.5px);
-            left: 0px;
-        }
     </style>
 </head>
-<body> 
 
-    <div class="main">
-        <i class="iconfont icon-arrow-up-bold" id="up-btn" onclick="slideToPrev()"></i>
-        <i class="iconfont icon-arrow-down-bold" id="down-btn" onclick="slideToNext()"></i>
-        <div id="content">
-            <div class="card">
-                <div class="card-time">2024</div>
-                <div class="card-title">《你的孤独，虽败犹荣》</div>
-
-                <div class="card-passage">
-                    <br>
-                    如果nextToken是null，说明已经到了最后一个token，此时需要返回null。
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-time">2024</div>
-                <div class="card-title">《你的孤独，虽败犹荣》</div>
-
-                <div class="card-passage">
-                    <br>
-                    如果nextToken是null，说明已经到了最后一个token，此时需要返回null。
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-time">2024</div>
-                <div class="card-title">《你的孤独，虽败犹荣》</div>
-
-                <div class="card-passage">
-                    <br>
-                    如果nextToken是null，说明已经到了最后一个token，此时需要返回null。
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-time">2024</div>
-                <div class="card-title">《你的孤独，虽败犹荣》</div>
-
-                <div class="card-passage">
-                    <br>
-                    如果nextToken是null，说明已经到了最后一个token，此时需要返回null。
-                </div>
-            </div>
+<body>
+    <!-- Header -->
+    <section id="header">
+        <div class="container left">
+            <button id="jiabi" onclick="window.location.href = './index.html'">
+            <svg t="1712461161076" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4804" id="mx_n_1712461161078" width="16" height="16"><path d="M455.111111 512h113.777778v113.777778H455.111111zM341.333333 512h113.777778v113.777778H341.333333zM341.333333 625.777778h113.777778v113.777778H341.333333zM227.555556 625.777778h113.777777v113.777778H227.555556zM455.111111 398.222222h113.777778v113.777778H455.111111zM568.888889 56.888889h113.777778v113.777778h-113.777778zM568.888889 398.222222h113.777778v113.777778h-113.777778zM341.333333 284.444444h113.777778v113.777778H341.333333zM341.333333 398.222222h113.777778v113.777778H341.333333zM341.333333 170.666667h113.777778v113.777777H341.333333zM113.777778 170.666667h113.777778v113.777777H113.777778zM113.777778 56.888889h113.777778v113.777778H113.777778zM227.555556 398.222222h113.777777v113.777778H227.555556zM113.777778 398.222222h113.777778v113.777778H113.777778zM0 398.222222h113.777778v113.777778H0zM227.555556 512h113.777777v113.777778H227.555556zM113.777778 512h113.777778v113.777778H113.777778zM227.555556 284.444444h113.777777v113.777778H227.555556zM455.111111 284.444444h113.777778v113.777778H455.111111zM455.111111 170.666667h113.777778v113.777777H455.111111zM227.555556 56.888889h113.777777v113.777778H227.555556zM341.333333 56.888889h113.777778v113.777778H341.333333zM0 284.444444h113.777778v113.777778H0zM0 170.666667h113.777778v113.777777H0zM568.888889 284.444444h113.777778v113.777778h-113.777778zM682.666667 625.777778h113.777777v113.777778h-113.777777zM796.444444 512h113.777778v113.777778h-113.777778zM568.888889 739.555556h113.777778v113.777777h-113.777778zM455.111111 853.333333h113.777778v113.777778H455.111111zM910.222222 398.222222h113.777778v113.777778h-113.777778zM910.222222 284.444444h113.777778v113.777778h-113.777778zM796.444444 284.444444h113.777778v113.777778h-113.777778zM796.444444 56.888889h113.777778v113.777778h-113.777778zM910.222222 170.666667h113.777778v113.777777h-113.777778zM796.444444 398.222222h113.777778v113.777778h-113.777778zM682.666667 512h113.777777v113.777778h-113.777777zM568.888889 625.777778h113.777778v113.777778h-113.777778zM455.111111 739.555556h113.777778v113.777777H455.111111zM682.666667 56.888889h113.777777v113.777778h-113.777777zM682.666667 284.444444h113.777777v113.777778h-113.777777zM568.888889 170.666667h113.777778v113.777777h-113.777778zM796.444444 170.666667h113.777778v113.777777h-113.777778zM682.666667 170.666667h113.777777v113.777777h-113.777777zM682.666667 398.222222h113.777777v113.777778h-113.777777zM568.888889 512h113.777778v113.777778h-113.777778zM455.111111 625.777778h113.777778v113.777778H455.111111zM341.333333 739.555556h113.777778v113.777777H341.333333z" fill="#000000" p-id="4805"></path></svg>                Jiabi
+            </button>
+            <button id="timeline" onclick="window.location.href = './timeline.html'">
+                Timeline
+            </button>
         </div>
-        <div id="clock">
-            <div id="clock-center"></div>
-            <div id="clock-pointer"></div>
-            <div id="clock-table"></div>
+ 
+        <div class="container left add">
+            <button id="about" onclick="window.location.href = './blog.html'">
+                Blog
+            </button>
         </div>
-    </div>
 
-    <script>
-        // 定义变量
-        let offset = 0;
-        let maxOffset = 0;
-        let minOffset = -3;
-        // 获取所有卡片元素并存储在数组中
-        const slides = Array.from(document.querySelectorAll(".card"));
-        // 获取时钟表盘元素
-        const clock = document.querySelector("#clock-table");
-        // 设定起始年份为2021
-        let startYear = 2021;
-        for (let i = -60, year = startYear - 1; i < 300; i += 6) {
-            // 调用添加时钟刻度函数
-            addClockScale(i);
-            if (i % 60 === 0) {
-                // 如果为整点时，调用添加粗刻度函数
-                addThickClockScale(i, year);
-                year++;
-            }
-        }
-        // 添加时钟刻度
-        function addClockScale(degree) {
-            // 创建一个隐藏的表格元素
-            const invisibleClockTable = document.createElement("div");
-            // 添加类名
-            invisibleClockTable.className = "invisible-table";
-            // 设置旋转角度
-            invisibleClockTable.style.transform = `rotate(${degree}deg)`;
-            // 创建时钟刻度元素
-            const clockScale = document.createElement("div");
-            // 添加类名
-            clockScale.className = "clock-scale";
-            // 将时钟刻度元素添加到表格中
-            invisibleClockTable.appendChild(clockScale);
-            // 将表格添加到时钟表盘中
-            clock.appendChild(invisibleClockTable);
-        }
-        // 添加粗刻度
-        function addThickClockScale(degree, time) {
-            // 创建一个隐藏的表格元素
-            const invisibleClockTable = document.createElement("div");
-            invisibleClockTable.className = "invisible-table";
-            invisibleClockTable.style.transform = `rotate(${degree}deg)`;
-            const thickClockScale = document.createElement("div");
-            thickClockScale.className = "clock-thick";
-            const scaleContent = document.createElement("span");
-            scaleContent.textContent = `${time}`;
-            thickClockScale.appendChild(scaleContent);
-            invisibleClockTable.appendChild(thickClockScale);
-            clock.appendChild(invisibleClockTable);
-        }
-        // 向前切换卡片
-        function slideToPrev() {
-            // 更新偏移量，取最大值
-            offset = Math.min(maxOffset, offset + 1);
-            slides.forEach(slide => {
-                // 根据偏移量设置卡片垂直偏移效果
-                slide.style.transform = `translateY(${offset * 100}%)`;
-            });
-            // 调用旋转时钟表盘函数
-            clockRotate(offset * 60);
-        }
-        // 向后切换卡片
-        function slideToNext() {
-            offset = Math.max(minOffset, offset - 1);
-            slides.forEach(slide => {
-                slide.style.transform = `translateY(${offset * 100}%)`;
-            });
-            clockRotate(offset * 60);
-        }
-        // 旋转时钟表盘
-        function clockRotate(degree) {
-            // 根据角度旋转时钟表盘
-            clock.style.transform = `rotate(${degree}deg)`;
-        }
-    </script> 
+        <div class="container right">
+            <button id="kiss" onclick="window.location.href = './kiss.html'">
+                Give a kiss
+            </button>
+        </div>
+    </section>
+
+   
+
 </body>
+
 
 </html>
