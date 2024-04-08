@@ -14,9 +14,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 
-    <!-- 引入js -->
-    <script src="./script.js"></script>
-
     <!-- 引入css -->
     <link rel="stylesheet" href="./header-style.css">
 
@@ -30,9 +27,109 @@
     <meta name="theme-color" content="#ffffff">
 
     <style>
+        #hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 3;
+        }
+
+        #hero h2 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        #hero h3 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        #hero p {
+            margin-top: 12px;
+        }
+
+        #hero {
+            /* background-color: #f49899; */
+            position: relative;
+            width: 100vw;
+            height: auto;
+            top: 100px;
+
+            font-family: 'ChineseFont', 'Pixelify Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #333;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #hero > .content {
+            /* background-color: aqua; */
+            position: relative;
+            width: 540px;
+
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        #hero > .jiabi-photo {
+            /* background-color: blue; */
+            position: relative;
+            height: 100%; /* 就调这儿 */
+            width: auto; /* 就调这儿 */
+
+            order: 2;
+            
+            overflow: hidden; /* 清除浮动 */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .jiabi-photo img {
+            width: 540px; /* 就调这儿 */
+        
+            float: left; /* 图像浮动 */
+            z-index: 1;
+
+            border-top: 16px solid #fff;
+            border-bottom: 64px solid #fff;
+            border-left: 16px solid #fff;
+            border-right: 16px solid #fff;
+            border-radius: 6px;
+
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
         
 
-        
+        @media (max-width: 1080px) {
+            #hero {
+                flex-direction: column;
+            }
+
+            #hero > .jiabi-photo {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 540px) {
+
+            .jiabi-photo img {
+                width: 100%; /* 就调这儿 */
+            }
+
+            #hero > .content {
+                width: 100%;
+            }
+            
+        }
 
     </style>
 </head>
@@ -56,13 +153,35 @@
         </div>
 
         <div class="container right">
-            <button id="kiss" onclick="window.location.href = './kiss.html'">
+            <button id="giveakiss" onclick="window.location.href = './kiss.html'">
                 Give a kiss
             </button>
         </div>
     </section>
+    
 
-   
+    <!-- hero -->
+    <section id="hero">
+        <div class="jiabi-photo">
+            <img src="./image/little-jiabi.jpg" alt="little-jiabi">
+        </div>
+
+        <div class="content">
+            <h1>Hello, I'm Jiabi</h1>
+            
+            <h3>AKA:</h3>
+            <h2>杂事球</h2>
+            <h2>杂比 / 杂煲 /杂宝 / 杂包 / 杂酱</h2>
+            <h2>咋比 / 咋煲 / 咋宝 / 咋包</h2>
+            <h2>大肉丸</h2>
+            <h2>大漏丸丸丸</h2>
+            <h2>小豆丁</h2>
+            <h2>加缪</h2>
+            <h2>佳佳</h2>
+            <h2>佳勒比</h2>
+            <h2>很帅</h2>
+        </div> 
+    </section>
 
 </body>
 

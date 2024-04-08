@@ -14,9 +14,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 
-    <!-- 引入js -->
-    <script src="./script.js"></script>
-
     <!-- 引入css -->
     <link rel="stylesheet" href="./header-style.css">
 
@@ -66,7 +63,6 @@
         #photo-container img {
             position: absolute;
             opacity: 1;
-            transition: opacity 0.5s;
         }
 
         #footer {
@@ -197,7 +193,7 @@
         </div>
 
         <div class="container right">
-            <button id="kiss" onclick="window.location.href = './kiss.html'">
+            <button id="giveakiss" onclick="window.location.href = './kiss.html'">
                 Give a kiss
             </button>
         </div>
@@ -325,10 +321,6 @@
 
     // 播放音效
     audio.play();
-
-
-
-
 
     // 将新图片添加到图片容器中
     photoContainer.appendChild(newImage);
