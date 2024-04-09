@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照片墙</title>
+
+     <!-- 引入css -->
+     <link rel="stylesheet" href="./header-style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            /* background-color: aqua; */
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 16px;
+            position: relative;
+            top: -56px;
+            
+        }
+
+        .image {
+            transition: .3s;
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+
+
+            border-top: 8px solid #fff;
+            border-left: 8px solid #fff;
+            border-right: 8px solid #fff;
+            border-bottom: 64px solid #fff;
+            
+            border-radius: 6px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card {
+            position: absolute;
+            left: calc(50% - 140px);
+            top: calc(50% - 140px);
+            transform: translate(-50%, -50%);
+            margin: 8px;
+            height: 280px;
+            border-radius: 6px;
+            box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            background-color: #f9f9f9d8;
+        }
+
+        .card:hover {
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+            background-color: #f9f9f9;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    </div>
+</body>
+
+
+
+<!-- 引入jQuery库 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 引入jQuery UI库 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<!-- 图片效果 -->
+<script>
+
+    // 获取.container元素
+    const target = document.querySelector(".container");
+    // 设置图片数量为7
+    var imageCount = 9;
+    // 存储已使用的图片名称
+    var usedImages = [];
+
+    // 循环生成指定数量的图片卡片
+    for (i = 0; i < imageCount; i++) {
+        // 生成图片卡片
+        var randNum = getRandomImageIndex();
+        createImage(randNum);
+        // 随机散布卡片
+        scatterCards();
+    }
+    // 逐个显示卡片
+    show(0);
+
+    // 从img文件夹中随机选择未使用的图片名称
+    function getRandomImageIndex() {
+        var randNum = Math.ceil(Math.random() * imageCount);
+        while (usedImages.includes(randNum)) {
+            randNum = Math.ceil(Math.random() * imageCount);
+        }
+        usedImages.push(randNum);
+        return randNum;
+    }
+
+    // 根据随机数生成图片卡片
+    function createImage(randNum) {
+        target.innerHTML += `<div class="card">
+        <img src="./image/2022/${padNumber(randNum)}.webp" class="image">
+        <div class="color-codes"><h1>${padNumber(randNum)}</h1></div>
+        </div>`;
+    }
+
+    // 将数字转换为两位数格式（例如：1 -> 01）
+    function padNumber(number) {
+        return number.toString().padStart(2, '0');
+    }
+
+    // 逐个显示卡片
+    function show(i) {
+        var cards = document.querySelectorAll(".card");
+        if (i < imageCount) {
+            setTimeout(function () {
+                cards[i].classList.add("active");
+                i++;
+                show(i);
+            }, 100);
+        }
+    }
+
+    // 随机散布卡片
+    function scatterCards() {
+    $(".card")
+        .each(function () {
+            // Random rotation angle
+            var rNum = Math.random() * 50 - 2;
+            rNum *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
+            // Random position offset
+            var x = Math.random() * (window.innerWidth - 280) - 140;
+            var y = Math.random() * (window.innerHeight - 280) - 140;
+
+            // Set the card's rotation angle and position
+            $(this).css({
+                "-webkit-transform": "rotate(" + rNum + "2deg)",
+                "-moz-transform": "rotate(" + rNum + "2deg)",
+                top: y,
+                left: x
+            });
+        })
+        // 设置卡片可拖动，并形成堆叠效果
+        .draggable({
+                stack: ".card",
+                stop: function (event, ui) {
+                    // 获取鼠标甩开时的位置
+                    var originalPosition = ui.originalPosition;
+                    // 获取当前卡片的位置
+                    var currentPosition = ui.position;
+                    // 计算位置的差值
+                    var diffX = currentPosition.left - originalPosition.left;
+                    var diffY = currentPosition.top - originalPosition.top;
+
+                    // 动画效果，让卡片飘动一段距离，方向与鼠标甩开的方向一致
+                    $(this).animate({
+                        top: "+=" + 0.2 * diffY + "px",
+                        left: "+=" + 0.2 * diffX + "px"
+                    }, 100);
+                }
+            });
+}
+</script>
+
+<!-- 返回键 -->
+<script>
+    // 创建一个新的 div 元素
+    var btnElement = document.createElement('div');
+    
+    // 创建一个新的 img 元素
+    var imgElement = document.createElement('img');
+    imgElement.src = 'image/NewBI-delete2.svg'; // 根据项目结构调整图标文件的路径
+    imgElement.alt = 'pixel-cd';
+    imgElement.style.opacity = '1';
+    imgElement.style.width = '30px'; // 设置元素的宽度
+    
+    // 设置元素的样式
+    btnElement.style.position = 'fixed';
+    
+    btnElement.style.width = '100px';
+    btnElement.style.height = '100px';
+    btnElement.style.top = '32px';
+    btnElement.style.left = '32px';
+    btnElement.style.zIndex = '9999';
+
+    
+    // 将元素添加到页面
+    document.body.appendChild(btnElement);
+    
+    // 将 img 元素添加到 div 元素中
+    btnElement.appendChild(imgElement);
+
+    // 鼠标悬停时的效果
+btnElement.addEventListener('mouseenter', function() {
+  imgElement.style.opacity = '1';
+  imgElement.style.transform = 'scale(2)';
+});
+
+// 鼠标离开时的效果
+btnElement.addEventListener('mouseleave', function() {
+  imgElement.style.opacity = '1';
+  imgElement.style.transform = 'scale(1)';
+});
+
+// 鼠标点击时的效果
+btnElement.addEventListener('click', function() {
+  history.back();
+});
+</script>
+</html>

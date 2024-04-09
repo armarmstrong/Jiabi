@@ -366,14 +366,79 @@
     });
 </script>
 
+<!-- cat -->
+<script>
+    const catButton = document.getElementById('cat');
+
+// Listen for button clicks
+catButton.addEventListener('click', function() {
+  // Check if the cat image already exists
+  const catImage = document.querySelector('img[src="./image/cat.webp"]');
+
+  if (catImage) {
+    // If the image already exists, play the fart sound
+    const audio = new Audio("./audio/fart.mp3");
+    audio.play();
+  } else {
+    // If the image does not exist, create a new image and play the fart sound
+    const newImage = document.createElement('img');
+    newImage.src = "./image/cat.webp";
+    newImage.alt = "Cat Image";
+
+    // Set the new image's fixed size
+    newImage.style.width = "100px";
+    newImage.style.height = "100px";
+    newImage.style.position = "fixed";
+    newImage.style.left = "50%";
+    newImage.style.top = "50%";
+    newImage.style.transform = "translate(-50%, -50%) scale(0.85)";
+
+    // Add the new image to the page
+    document.body.appendChild(newImage);
+
+    // Set the initial opacity to 1
+    newImage.style.opacity = "1";
+
+    // Set the target scale to 15
+    const targetScale = 15;
+
+    // Define the animation step
+    const animationStep = (timestamp) => {
+      // Calculate the current scale based on the elapsed time
+      const elapsedTime = timestamp - startTime;
+      const currentScale = 0.85 + (targetScale - 0.85) * (elapsedTime / 400);
+
+      // Update the image's scale
+      newImage.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+
+      // If the current scale is less than the target scale, continue the animation
+      if (currentScale < targetScale) {
+        requestAnimationFrame(animationStep);
+      }
+    };
+
+    // Start the animation
+    const startTime = performance.now();
+    requestAnimationFrame(animationStep);
+
+    // Play the fart sound
+    const audio = new Audio("./audio/fart.mp3");
+    audio.play();
+  }
+});
+
+</script>
+
+
+<!-- 开发中 -->
 <script>
     // 获取按钮元素
-  var catButton = document.getElementById('cat');
+    // var catButton = document.getElementById('cat');
   var bananaButton = document.getElementById('banana');
   var firefighterButton = document.getElementById('firefighter');
   
     // 监听按钮的点击事件
-    catButton.addEventListener('click', displayPopup);
+    // catButton.addEventListener('click', displayPopup);
     bananaButton.addEventListener('click', displayPopup);
     firefighterButton.addEventListener('click', displayPopup);
         

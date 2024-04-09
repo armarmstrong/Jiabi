@@ -13,9 +13,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 
-    <!-- 引入js -->
-    <script src="./script.js"></script>
-
     <!-- 引入css -->
     <link rel="stylesheet" href="./header-style.css">
 
@@ -250,39 +247,39 @@
             <div id="content">
                 <div class="card" id="2021">
                     <div class="locator"></div>
-                    <img class="centered-image 2021" src="./image/2021/img1.webp" alt="">
-                    <img class="centered-image 2021" src="./image/2021/img2.webp" alt="">
-                    <img class="centered-image 2021" src="./image/2021/img3.webp" alt="">
-                    <img class="centered-image 2021" src="./image/2021/img4.webp" alt="">
-                    <img class="centered-image 2021" src="./image/2021/img5.webp" alt="">
-                    <img class="centered-image 2021" src="./image/2021/img6.webp" alt="">
+                    <img class="centered-image 2021" src="./image/2021/01.webp" alt="">
+                    <img class="centered-image 2021" src="./image/2021/02.webp" alt="">
+                    <img class="centered-image 2021" src="./image/2021/03.webp" alt="">
+                    <img class="centered-image 2021" src="./image/2021/04.webp" alt="">
+                    <img class="centered-image 2021" src="./image/2021/05.webp" alt="">
+                    <img class="centered-image 2021" src="./image/2021/06.webp" alt="">
                 </div>
                 <div class="card" id="2022">
                     <div class="locator"></div>
-                    <img class="centered-image 2022" src="./image/2022/img1.webp" alt="">
-                    <img class="centered-image 2022" src="./image/2022/img2.webp" alt="">
-                    <img class="centered-image 2022" src="./image/2022/img3.webp" alt="">
-                    <img class="centered-image 2022" src="./image/2022/img4.webp" alt="">
-                    <img class="centered-image 2022" src="./image/2022/img5.webp" alt="">
-                    <img class="centered-image 2022" src="./image/2022/img6.webp" alt="">
+                    <img class="centered-image 2022" src="./image/2022/01.webp" alt="">
+                    <img class="centered-image 2022" src="./image/2022/02.webp" alt="">
+                    <img class="centered-image 2022" src="./image/2022/03.webp" alt="">
+                    <img class="centered-image 2022" src="./image/2022/04.webp" alt="">
+                    <img class="centered-image 2022" src="./image/2022/05.webp" alt="">
+                    <img class="centered-image 2022" src="./image/2022/06.webp" alt="">
                 </div>
                 <div class="card" id="2023">
                     <div class="locator"></div>
-                    <img class="centered-image 2023" src="./image/2023/img1.webp" alt="">
-                    <img class="centered-image 2023" src="./image/2023/img2.webp" alt="">
-                    <img class="centered-image 2023" src="./image/2023/img3.webp" alt="">
-                    <img class="centered-image 2023" src="./image/2023/img4.webp" alt="">
-                    <img class="centered-image 2023" src="./image/2023/img5.webp" alt="">
-                    <img class="centered-image 2023" src="./image/2023/img6.webp" alt="">
+                    <img class="centered-image 2023" src="./image/2023/01.webp" alt="">
+                    <img class="centered-image 2023" src="./image/2023/02.webp" alt="">
+                    <img class="centered-image 2023" src="./image/2023/03.webp" alt="">
+                    <img class="centered-image 2023" src="./image/2023/04.webp" alt="">
+                    <img class="centered-image 2023" src="./image/2023/05.webp" alt="">
+                    <img class="centered-image 2023" src="./image/2023/06.webp" alt="">
                 </div>
                 <div class="card" id="2024">
                     <div class="locator"></div>
-                    <img class="centered-image 2024" src="./image/2024/img1.webp" alt="">
-                    <img class="centered-image 2024" src="./image/2024/img2.webp" alt="">
-                    <img class="centered-image 2024" src="./image/2024/img3.webp" alt="">
-                    <img class="centered-image 2024" src="./image/2024/img4.webp" alt="">
-                    <img class="centered-image 2024" src="./image/2024/img5.webp" alt="">
-                    <img class="centered-image 2024" src="./image/2024/img6.webp" alt="">
+                    <img class="centered-image 2024" src="./image/2024/01.webp" alt="">
+                    <img class="centered-image 2024" src="./image/2024/02.webp" alt="">
+                    <img class="centered-image 2024" src="./image/2024/03.webp" alt="">
+                    <img class="centered-image 2024" src="./image/2024/04.webp" alt="">
+                    <img class="centered-image 2024" src="./image/2024/05.webp" alt="">
+                    <img class="centered-image 2024" src="./image/2024/06.webp" alt="">
                 </div>
             </div>
         </div>
@@ -311,7 +308,7 @@
             image.style.position = 'absolute';
 
             // 只对前4张图片应用定位和显示的逻辑
-            if (index < 4) {
+            if (index < 5) {
             const locatorWidth = photoLocator.offsetWidth;
             const locatorHeight = photoLocator.offsetHeight;
             const imageWidth = image.offsetWidth;
@@ -334,7 +331,32 @@
             }
         });
         });
+
+        // 鼠标点击image，查找该image的父级card的id，跳转到id对应的html页面（id名=html文件名）
+        cards.forEach(function(card) {
+        // 获取当前 card 容器的图片元素
+        var images = card.querySelectorAll('.centered-image');
+
+        // 遍历每个图片元素
+        images.forEach(function(image) {
+            image.addEventListener('click', function() {
+            // 获取当前图片的父级 card 容器的 id
+            var cardId = card.id;
+
+            // 根据 id 跳转到对应的 html 页面
+            window.location.href = cardId + '.html';
+            });
+
+             // 鼠标悬停在图片上时，鼠标变大
+            image.addEventListener('mouseover', function() {
+                image.style.cursor = 'zoom-in';
+            });
+        });
+        });
     </script>
+
+
+
 
 
     <script>
@@ -388,6 +410,7 @@
             invisibleClockTable.appendChild(thickClockScale);
             clock.appendChild(invisibleClockTable);
         }
+
 
         // 监听键盘事件，并将特定的按键映射到相应的函数。
         document.addEventListener('keydown', function(event) {
