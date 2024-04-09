@@ -18,7 +18,7 @@ body {
 body {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-start; /* 是否可以删掉？ */
     height: 100vh;
     background-color: #f4f3f0;
     background-size: cover;

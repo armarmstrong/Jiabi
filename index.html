@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jiabi</title>
+    <title>佳有一比，如有一宝</title>
 
     <!-- 引入字体图标库 -->
     <link rel="stylesheet" href="./font/iconfont.css">
@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="./header-style.css">
 
     <!-- 加入ico -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.webp">
+    <link rel="icon" type="image/webp" sizes="32x32" href="/favicon-32x32.webp">
+    <link rel="icon" type="image/webp" sizes="16x16" href="/favicon-16x16.webp">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
@@ -75,6 +75,7 @@
 
             padding-left: 16px;
             padding-right: 16px;
+            padding-bottom: 100px;
         }
 
         #hero > .jiabi-photo {
@@ -85,7 +86,8 @@
 
             order: 2;
             
-            overflow: hidden; /* 清除浮动 */
+            padding-left: 8px;
+            padding-right: 8px;
 
             display: flex;
             justify-content: center;
@@ -103,9 +105,9 @@
             border-bottom: 64px solid #fff;
             border-left: 16px solid #fff;
             border-right: 16px solid #fff;
-            
+
             border-radius: 6px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
         }
         
 
@@ -130,6 +132,15 @@
             }
             
         }
+
+        /* @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        } */
 
     </style>
 </head>
@@ -163,20 +174,20 @@
     <!-- hero -->
     <section id="hero">
         <div class="jiabi-photo">
-            <img src="./image/little-jiabi.jpg" alt="little-jiabi">
+            <img src="./image/little-jiabi.webp" alt="little-jiabi">
         </div>
 
         <div class="content">
             <h1>Hello, I'm Jiabi</h1>
             
             <h3>AKA:</h3>
-            <h2>杂事球</h2>
+            <h2>杂事球 🎾</h2>
             <h2>杂比 / 杂煲 /杂宝 / 杂包 / 杂酱</h2>
             <h2>咋比 / 咋煲 / 咋宝 / 咋包</h2>
-            <h2>大肉丸</h2>
+            <h2>大肉丸 🍡</h2>
             <h2>大漏丸丸丸</h2>
             <h2>小豆丁</h2>
-            <h2>加缪</h2>
+            <h2>加缪 🐭</h2>
             <h2>佳勒比</h2>
             <h2>很帅</h2>
             <h2>...</h2>
@@ -185,5 +196,126 @@
 
 </body>
 
+<!-- 整个cd组件 -->
+<script>
+// 创建一个新的 div 元素
+var cdElement = document.createElement('div');
+
+// 创建一个新的 img 元素
+var imgElement = document.createElement('img');
+imgElement.src = 'image/cd.webp'; // 根据项目结构调整图标文件的路径
+imgElement.alt = 'pixel-cd';
+imgElement.style.opacity = '0.6';
+imgElement.style.width = '100px'; // 设置元素的宽度
+
+// 设置元素的样式
+cdElement.style.position = 'fixed';
+cdElement.style.width = '100px';
+cdElement.style.height = '100px';
+cdElement.style.bottom = '56px';
+cdElement.style.left = '16px';
+cdElement.style.zIndex = '9999';
+
+
+// 将元素添加到页面
+document.body.appendChild(cdElement);
+
+// 将 img 元素添加到 div 元素中
+cdElement.appendChild(imgElement);
+
+// 设置初始状态
+var isRotating = false;
+
+var quickAudio = new Audio('./audio/千本桜.mp3'); // 根据项目结构调整音频文件的路径
+quickAudio.currentTime = 1.4;
+quickAudio.volume = 0.2;
+
+var audio;
+
+// var currentDate = new Date();
+// var month = currentDate.getMonth() + 1; // 月份从0开始，所以需要加1
+// var day = currentDate.getDate();
+// if (month === 4 && day === 11) {
+//   audio = new Audio('./audio/happybirthday.mp3');
+// } else {
+//   var bgmList = ['./audio/bgm/bgm1.mp3', './audio/bgm/bgm2.mp3', './audio/bgm/bgm3.mp3'];
+//   var randomIndex = Math.floor(Math.random() * bgmList.length);
+//   audio = new Audio(bgmList[randomIndex]);
+// }
+
+
+
+// 创建 <style> 元素
+    var styleElement = document.createElement('style');
+
+// 设置 CSS 代码
+styleElement.innerHTML = `
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+`;
+
+// 将 <style> 元素插入到 <head> 元素中
+document.head.appendChild(styleElement);
+
+
+// 鼠标悬停时的效果
+cdElement.addEventListener('mouseenter', function() {
+  imgElement.style.opacity = '1';
+  imgElement.style.transform = 'scale(1.2)';
+
+  if (isRotating) {
+    cdElement.style.animationDuration = '0.3s';
+    audio.pause();
+    quickAudio.play();
+  }
+});
+
+// 鼠标离开时的效果
+cdElement.addEventListener('mouseleave', function() {
+  imgElement.style.opacity = '0.6';
+  imgElement.style.transform = 'scale(1)';
+
+  if (isRotating) {
+    cdElement.style.animationDuration = '2s';
+    quickAudio.pause();
+    audio.play();
+  }
+});
+
+// 鼠标点击时的效果
+cdElement.addEventListener('click', function() {
+if (!isRotating) {
+    
+    var currentDate = new Date();
+    var month = currentDate.getMonth() + 1; // 月份从0开始，所以需要加1
+    var day = currentDate.getDate();
+    if (month === 4 && day === 11) {
+    audio = new Audio('./audio/happybirthday.mp3');
+    } else {
+    var bgmList = ['./audio/bgm/bgm1.mp3', './audio/bgm/bgm2.mp3', './audio/bgm/bgm3.mp3'];
+    var randomIndex = Math.floor(Math.random() * bgmList.length);
+    audio = new Audio(bgmList[randomIndex]);
+    }
+    
+    isRotating = true;
+    cdElement.style.animation = 'rotation 2s linear infinite';
+    audio.volume = 0.2;
+    audio.play();
+} else {
+    isRotating = false;
+    cdElement.style.animation = '';
+    audio.pause();
+    audio.currentTime = 0;
+    quickAudio.pause();
+    quickAudio.currentTime = 1.4;
+}
+});
+</script>
 
 </html>

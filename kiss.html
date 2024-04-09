@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jiabi</title>
+    <title>佳有一比，如有一宝</title>
 
     <!-- 引入字体图标库 -->
     <link rel="stylesheet" href="./font/iconfont.css">
@@ -16,6 +16,8 @@
 
     <!-- 引入css -->
     <link rel="stylesheet" href="./header-style.css">
+
+
 
     <style>
         #photo {
@@ -179,6 +181,8 @@
             transform: translate(-50%, -50%);
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
+            
+            font-family: 'ChineseFont', 'Pixelify Sans', sans-serif;
 
             padding: 20px;
             border-radius: 10px;
@@ -217,7 +221,7 @@
     <section id="photo">
         <div class="container">
             <div id="photo-container"></div>
-            <img src="./image/jiabi.jpg" alt="jiabi" id="jiabi-photo">
+            <img src="./image/jiabi.webp" alt="jiabi" id="jiabi-photo">
         </div>
     </section>
 
@@ -263,7 +267,7 @@
   kissButton.addEventListener('click', function() {
     // 创建新的图片元素
     const newImage = document.createElement('img');
-    newImage.src = "./image/kiss.png";
+    newImage.src = "./image/kiss.webp";
     newImage.alt = "Kiss Image";
     
     // 设置新图片的固定大小
@@ -378,7 +382,7 @@
         // 创建弹窗元素
         var popup = document.createElement('div');
         popup.className = 'popup';
-        popup.textContent = '该功能正在开发中👷';
+        popup.textContent = '(๑•́ ₃ •̀๑) Developing... <br /> No disturb!';
 
         // 将弹窗元素添加到文档中
         document.body.appendChild(popup);
@@ -388,6 +392,127 @@
         document.body.removeChild(popup);
         }, 2000); // 3秒后移除弹窗
     }
-  </script>
+</script>
+
+<!-- 整个cd组件 -->
+<script>
+    // 创建一个新的 div 元素
+    var cdElement = document.createElement('div');
+    
+    // 创建一个新的 img 元素
+    var imgElement = document.createElement('img');
+    imgElement.src = 'image/cd.webp'; // 根据项目结构调整图标文件的路径
+    imgElement.alt = 'pixel-cd';
+    imgElement.style.opacity = '0.6';
+    imgElement.style.width = '100px'; // 设置元素的宽度
+    
+    // 设置元素的样式
+    cdElement.style.position = 'fixed';
+    cdElement.style.width = '100px';
+    cdElement.style.height = '100px';
+    cdElement.style.bottom = '56px';
+    cdElement.style.left = '16px';
+    cdElement.style.zIndex = '9999';
+    
+    
+    // 将元素添加到页面
+    document.body.appendChild(cdElement);
+    
+    // 将 img 元素添加到 div 元素中
+    cdElement.appendChild(imgElement);
+    
+    // 设置初始状态
+    var isRotating = false;
+    
+    var quickAudio = new Audio('./audio/千本桜.mp3'); // 根据项目结构调整音频文件的路径
+    quickAudio.currentTime = 1.4;
+    quickAudio.volume = 0.2;
+    
+    var audio;
+    // var currentDate = new Date();
+    // var month = currentDate.getMonth() + 1; // 月份从0开始，所以需要加1
+    // var day = currentDate.getDate();
+    // if (month === 4 && day === 11) {
+    //   audio = new Audio('./audio/happybirthday.mp3');
+    // } else {
+    //   var bgmList = ['./audio/bgm/bgm1.mp3', './audio/bgm/bgm2.mp3', './audio/bgm/bgm3.mp3'];
+    //   var randomIndex = Math.floor(Math.random() * bgmList.length);
+    //   audio = new Audio(bgmList[randomIndex]);
+    // }
+    
+    
+    
+    // 创建 <style> 元素
+        var styleElement = document.createElement('style');
+    
+    // 设置 CSS 代码
+    styleElement.innerHTML = `
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    `;
+    
+    // 将 <style> 元素插入到 <head> 元素中
+    document.head.appendChild(styleElement);
+    
+    
+    // 鼠标悬停时的效果
+    cdElement.addEventListener('mouseenter', function() {
+      imgElement.style.opacity = '1';
+      imgElement.style.transform = 'scale(1.2)';
+    
+      if (isRotating) {
+        cdElement.style.animationDuration = '0.3s';
+        audio.pause();
+        quickAudio.play();
+      }
+    });
+    
+    // 鼠标离开时的效果
+    cdElement.addEventListener('mouseleave', function() {
+      imgElement.style.opacity = '0.6';
+      imgElement.style.transform = 'scale(1)';
+    
+      if (isRotating) {
+        cdElement.style.animationDuration = '2s';
+        quickAudio.pause();
+        audio.play();
+      }
+    });
+    
+    // 鼠标点击时的效果
+    cdElement.addEventListener('click', function() {
+    if (!isRotating) {
+        
+        var currentDate = new Date();
+        var month = currentDate.getMonth() + 1; // 月份从0开始，所以需要加1
+        var day = currentDate.getDate();
+        if (month === 4 && day === 11) {
+        audio = new Audio('./audio/happybirthday.mp3');
+        } else {
+        var bgmList = ['./audio/bgm/bgm1.mp3', './audio/bgm/bgm2.mp3', './audio/bgm/bgm3.mp3'];
+        var randomIndex = Math.floor(Math.random() * bgmList.length);
+        audio = new Audio(bgmList[randomIndex]);
+        }
+        
+        isRotating = true;
+        cdElement.style.animation = 'rotation 2s linear infinite';
+        audio.volume = 0.2;
+        audio.play();
+    } else {
+        isRotating = false;
+        cdElement.style.animation = '';
+        audio.pause();
+        audio.currentTime = 0;
+        quickAudio.pause();
+        quickAudio.currentTime = 1.4;
+    }
+    });
+</script>
 
 </html>
