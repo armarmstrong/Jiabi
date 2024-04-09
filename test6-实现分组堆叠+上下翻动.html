@@ -1,0 +1,194 @@
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Test Page</title> 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #content { 
+            background-color: aqua;
+            width: 60%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+        }
+        
+        .card {
+            width: 50vw;
+            height: 100vh;
+            position: relative;
+            background-color: blue;  
+
+            
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .locator {
+            width: 100px;
+            height: 100px;
+
+            position: relative;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+
+            /* margin: 10px; */
+
+            border-top: 8px solid #fff;
+            border-left: 8px solid #fff;
+            border-right: 8px solid #fff;
+            border-bottom: 56px solid #fff;
+            
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head> 
+
+<body> 
+    <div id="content">
+        <div class="card" id="2021">
+            <div class="locator"></div>
+            <img class="centered-image 2021" src="./image/cankao/img1.jpeg" alt="">
+            <img class="centered-image 2021" src="./image/cankao/img2.jpeg" alt="">
+            <img class="centered-image 2021" src="./image/cankao/img3.jpeg" alt="">
+            <img class="centered-image 2021" src="./image/cankao/img4.jpeg" alt="">
+            <img class="centered-image 2021" src="./image/cankao/img5.jpeg" alt="">
+            <img class="centered-image 2021" src="./image/cankao/img6.jpeg" alt="">
+        </div>
+    
+        <div class="card" id="2022">
+            <div class="locator"></div>
+            <img class="centered-image 2022" src="./image/cankao/img1.jpeg" alt="">
+            <img class="centered-image 2022" src="./image/cankao/img2.jpeg" alt="">
+            <img class="centered-image 2022" src="./image/cankao/img3.jpeg" alt="">
+            <img class="centered-image 2022" src="./image/cankao/img4.jpeg" alt="">
+            <img class="centered-image 2022" src="./image/cankao/img5.jpeg" alt="">
+            <img class="centered-image 2022" src="./image/cankao/img6.jpeg" alt="">
+        </div>
+    
+        <div class="card" id="2023">
+            <div class="locator"></div>
+            <img class="centered-image 2023" src="./image/cankao/img1.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img2.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img3.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img4.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img5.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img6.jpeg" alt="">
+        </div>
+
+        <div class="card" id="2024">
+            <div class="locator"></div>
+            <img class="centered-image 2023" src="./image/cankao/img1.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img2.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img3.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img4.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img5.jpeg" alt="">
+            <img class="centered-image 2023" src="./image/cankao/img6.jpeg" alt="">
+        </div>
+    </div>
+    
+    
+    
+    <script>  
+        // 获取所有 card 容器
+        var cards = document.querySelectorAll('.card');
+
+        // 遍历每个 card 容器
+        cards.forEach(function(card) {
+        // 获取当前 card 容器内的图片元素
+        var images = card.querySelectorAll('.centered-image');
+
+        // 获取 locator 容器
+        var photoLocator = card.querySelector('.locator');
+
+        // 遍历每个图片元素
+        images.forEach(function(image, index) {
+            image.style.position = 'absolute';
+
+            // 只对前4张图片应用定位和显示的逻辑
+            if (index < 4) {
+            const locatorWidth = photoLocator.offsetWidth;
+            const locatorHeight = photoLocator.offsetHeight;
+            const imageWidth = image.offsetWidth;
+            const imageHeight = image.offsetHeight;
+            const randomX = Math.floor(Math.random() * (locatorWidth - imageWidth));
+            const randomY = Math.floor(Math.random() * (locatorHeight - imageHeight));
+
+            image.style.left = randomX + photoLocator.offsetLeft -64 + 'px';
+            image.style.top = randomY + photoLocator.offsetTop -32 + 'px';
+
+            // 为每张图片生成随机旋转角度并应用类
+            var rotation = Math.floor(Math.random() * 31) - 15; // 随机生成-15~15之间的整数
+            image.style.transform = 'rotate(' + rotation + 'deg)';
+
+            // 显示前4张图片，隐藏其他图片
+            image.style.display = 'block';
+            } else {
+            // 隐藏第5张及之后的图片
+            image.style.display = 'none';
+            }
+        });
+        });
+
+
+    </script>
+
+    <script>
+        // 定义变量
+        let offset = 0;
+        let maxOffset = 0;
+        let minOffset = -3;
+        // 获取所有卡片元素并存储在数组中
+        const slides = Array.from(document.querySelectorAll(".card"));
+
+        // 监听键盘事件，并将特定的按键映射到相应的函数。
+        document.addEventListener('keydown', function(event) {
+            if (event.keyCode === 38) {
+                // 上键（keyCode 为 38）
+                slideToPrev();
+            } else if (event.keyCode === 40) {
+                // 下键（keyCode 为 40）
+                slideToNext();
+            }
+        });
+
+        // 向前切换卡片
+        function slideToPrev() {
+            // 更新偏移量，取最大值
+            offset = Math.min(maxOffset, offset + 1);
+            slides.forEach(slide => {
+                // 根据偏移量设置卡片垂直偏移效果
+                slide.style.transform = `translateY(${offset * 100}%)`;
+            });
+            // 调用旋转时钟表盘函数
+            clockRotate(offset * 60);
+        }
+        // 向后切换卡片
+        function slideToNext() {
+            offset = Math.max(minOffset, offset - 1);
+            slides.forEach(slide => {
+                slide.style.transform = `translateY(${offset * 100}%)`;
+            });
+            clockRotate(offset * 60);
+        }
+    </script>
+
+</body> 
+</html>

@@ -171,6 +171,20 @@
                 height: auto; /* 就调这儿 */
             }
         }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+
+            padding: 20px;
+            border-radius: 10px;
+            border: rgba(180, 180, 180, 0.4) 4px solid;
+            z-index: 9999;
+        }
     </style>
 </head>
 
@@ -347,5 +361,33 @@
       location.reload();
     });
 </script>
+
+<script>
+    // 获取按钮元素
+  var catButton = document.getElementById('cat');
+  var bananaButton = document.getElementById('banana');
+  var firefighterButton = document.getElementById('firefighter');
+  
+    // 监听按钮的点击事件
+    catButton.addEventListener('click', displayPopup);
+    bananaButton.addEventListener('click', displayPopup);
+    firefighterButton.addEventListener('click', displayPopup);
+        
+    // 显示弹窗
+    function displayPopup() {
+        // 创建弹窗元素
+        var popup = document.createElement('div');
+        popup.className = 'popup';
+        popup.textContent = '该功能正在开发中👷';
+
+        // 将弹窗元素添加到文档中
+        document.body.appendChild(popup);
+
+        // 移除弹窗元素
+        setTimeout(function() {
+        document.body.removeChild(popup);
+        }, 2000); // 3秒后移除弹窗
+    }
+  </script>
 
 </html>
