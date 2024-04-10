@@ -145,6 +145,7 @@
             #footer {
                 justify-content: center;
                 align-items: center;
+                position: fixed;
             }
 
             #footer > .btn-container {
@@ -401,8 +402,8 @@ catButton.addEventListener('click', function() {
     // Set the initial opacity to 1
     newImage.style.opacity = "1";
 
-    // Set the target scale to 15
-    const targetScale = 15;
+    // Set the target scale to 12% of the screen width
+    const targetScale = window.innerWidth * 0.0101;
 
     // Define the animation step
     const animationStep = (timestamp) => {

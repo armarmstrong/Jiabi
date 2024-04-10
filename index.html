@@ -94,6 +94,15 @@
             align-items: center;
         }
 
+        #jiabi-photo {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        #jiabi-photo:hover {
+            transform: rotateY(15deg) rotateX(10deg);
+        }
+
 
         .jiabi-photo img {
             width: 540px; /* 就调这儿 */
@@ -108,6 +117,57 @@
 
             border-radius: 6px;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
+        }
+
+        #h1jiabi {
+            display: inline-block;
+
+            width: 80px;
+
+            background: linear-gradient(to right, #6ceda2, #dc49f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 10s infinite linear; 
+            
+            margin-left: 12px;
+            margin-right: 12px;
+        }
+
+        @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
+        }
+
+
+        #h1jiabi:hover {
+        font-weight: lighter;
+        cursor: default;
+        }
+
+        .balloon {
+        position: absolute;
+        animation: float 4s linear;
+        font-size: 32px !important;
+        opacity: 0.9;
+        }
+
+
+
+        @keyframes float {
+        0% {
+            transform: translate(0, 0);
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(calc(100vw - 50px), calc(100vh - 50px));
+            opacity: 0;
+        }
         }
         
 
@@ -174,11 +234,11 @@
     <!-- hero -->
     <section id="hero">
         <div class="jiabi-photo">
-            <img src="./image/little-jiabi.webp" alt="little-jiabi">
+            <img id="jiabi-photo" src="./image/little-jiabi.webp" alt="little-jiabi">
         </div>
 
         <div class="content">
-            <h1>Hello, I'm Jiabi</h1>
+            <h1>Hello, I'm<span id="h1jiabi">Jiabi</span>🎈</h1>
             
             <h3>AKA:</h3>
             <h2>杂事球 🎾</h2>
@@ -315,6 +375,60 @@ if (!isRotating) {
     quickAudio.pause();
     quickAudio.currentTime = 1.4;
 }
+});
+</script>
+
+<!-- jiabi-photo -->
+<script>
+    const jiabiPhoto = document.getElementById('jiabi-photo');
+
+    jiabiPhoto.addEventListener('mousemove', (e) => {
+    // Calculate the rotation angles based on the mouse position
+    const xRotation = (e.clientX - jiabiPhoto.offsetLeft) / jiabiPhoto.offsetWidth * 10;
+    const yRotation = (e.clientY - jiabiPhoto.offsetTop) / jiabiPhoto.offsetHeight * 10;
+
+    // Apply the rotations to the div
+    jiabiPhoto.style.transform = `rotateY(${yRotation}deg) rotateX(${xRotation}deg)`;
+    });
+
+    jiabiPhoto.addEventListener('mouseout', () => {
+    // Reset the rotations when the mouse leaves the div
+    jiabiPhoto.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+</script>
+
+<!-- h1jiabi -->
+<script>
+   const h1jiabi = document.getElementById('h1jiabi');
+
+h1jiabi.addEventListener('click', () => {
+  // Create 10 balloons
+  for (let i = 0; i < 10; i++) {
+    const balloon = document.createElement('div');
+    balloon.classList.add('balloon');
+    balloon.innerHTML = '🎈';
+
+    // Set a random starting position for the balloon
+    balloon.style.left = `${Math.random() * 100}vw`;
+    balloon.style.top = `${Math.random() * 100}vh`;
+
+    // Add the balloon to the page
+    document.body.appendChild(balloon);
+
+    // Animate the balloon
+    balloon.animate([
+      { transform: 'translate(0, 0)' },
+      { transform: `translate(calc(100vw - 50px), calc(100vh - 50px))` }
+    ], {
+      duration: 4000,
+      easing: 'linear'
+    });
+
+    // Remove the balloon after 2 seconds
+    setTimeout(() => {
+      balloon.remove();
+    }, 4000);
+  }
 });
 </script>
 

@@ -64,10 +64,39 @@
         }
 
         .author {
-            background: linear-gradient(45deg, #ed6c91, #4950f6);
+            background: linear-gradient(45deg, #71227b, #b96fb5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .special {
+            display: inline-block;
+
+            width: 128px;
+
+            background: linear-gradient(to right, #6ceda2, #dc49f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 10s infinite linear; 
+            
+            margin-left: 8px;
+            margin-right: 2px;
+        }
+
+        @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
+        }
+
+        .special:hover {
+        font-weight: bolder;
+        cursor: wait;
+        }
+
 
         .separator {
             text-align: center;
@@ -127,8 +156,27 @@
 
             <div class="content" id="24040801">
                 <h2>04.10.24</h2>
+                <span class="tag"><span class="author">希比</span></span> <span class="tag">愁</span>
+                <p>
+                    03:36 PM
+                    <br />
+                    佳比太忙了！怎么办呢～
+                    <br />
+                    要不今天就把「jiabi.top」送给佳比吧！
+                    偷偷写个 <span class="special" id="birthdaylink">Happy Birthday</span> 在这里～
+                </p>
+            </div>
+
+            <div class="separator">
+                &#x1F437&#x1F437&#x1F437
+            </div>
+
+            <div class="content" id="24040801">
+                <h2>04.10.24</h2>
                 <span class="tag"><span class="author">希比</span></span> <span class="tag">开发日志</span>
                 <p>
+                    01:23 AM
+                    <br />
                     家人们，谁懂啊，好像真的要做完了！！！
                     <br />
                     昨天上午轻松愉快得完成了「timeline」的页面，下午轻松愉快得完成了「小唱片」。没想到晚上被「照片墙」彻底击垮，怎么也试不出来（早知道认真上Js课）。
@@ -293,7 +341,7 @@
         var currentDate = new Date();
         var month = currentDate.getMonth() + 1; // 月份从0开始，所以需要加1
         var day = currentDate.getDate();
-        if (month === 4 && day === 11) {
+        if (month === 4 &&  (day === 10 || day === 11)) {
         audio = new Audio('./audio/happybirthday.mp3');
         } else {
         var bgmList = ['./audio/bgm/bgm1.mp3', './audio/bgm/bgm2.mp3', './audio/bgm/bgm3.mp3'];
@@ -314,6 +362,14 @@
         quickAudio.currentTime = 1.4;
     }
     });
+
+    var birthdayLink = document.getElementById('birthdaylink');
+
+    birthdayLink.addEventListener('click', function() {
+    cdElement.click();
+    });
 </script>
+
+
 
 </html>

@@ -44,7 +44,7 @@
 
         #main > .container {
             /* background-color: greenyellow; */
-            width: 80%;
+            width: 85%;
             height: 100%;
             display: flex;
             flex-direction: row;
@@ -92,7 +92,7 @@
             width: 60%;
             height: 100%;
             position: absolute;
-            overflow: hidden;
+            
         }
 
         .card {
@@ -145,7 +145,7 @@
             height: 130%;
             aspect-ratio: 1 / 1; /* 宽高比 */
             position: absolute;
-            right: -35%;
+            right: calc(-32% + (100vw - 1500px) * 0.68);
             top: -15%;
             border-radius: 50%;
             background-color: rgba(180, 180, 180, 0.4);
@@ -153,9 +153,9 @@
             border: rgba(255, 255, 255, 0.4) 40px solid;
         }
 
-        @media (max-width: 1000px) {
+        @media (max-width: 540px) {
             #clock {
-                right: -90%;
+                
             }
         }
 
@@ -317,7 +317,7 @@
             const randomY = Math.floor(Math.random() * (locatorHeight - imageHeight));
 
             image.style.left = randomX + 0.5*photoLocator.offsetLeft +100 + 'px';
-            image.style.top = randomY + photoLocator.offsetTop -32 + 'px';
+            image.style.top = randomY + photoLocator.offsetTop -30 + 'px';
 
             // 为每张图片生成随机旋转角度并应用类
             var rotation = Math.floor(Math.random() * 31) - 15; // 随机生成-15~15之间的整数
