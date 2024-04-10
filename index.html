@@ -355,7 +355,7 @@ if (!isRotating) {
     var currentDate = new Date();
     var month = currentDate.getMonth() + 1; // 月份从0开始，所以需要加1
     var day = currentDate.getDate();
-    if (month === 4 && day === 11) {
+    if (month === 4 && (day === 10 || day === 11)) {
     audio = new Audio('./audio/happybirthday.mp3');
     } else {
     var bgmList = ['./audio/bgm/bgm1.mp3', './audio/bgm/bgm2.mp3', './audio/bgm/bgm3.mp3'];
