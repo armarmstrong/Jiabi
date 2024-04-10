@@ -115,6 +115,28 @@
             padding-bottom: 100px;
         }
 
+        .birthdaycake {
+        position: absolute;
+        animation: float 4s linear;
+        font-size: 32px !important;
+        opacity: 0.9;
+        }
+
+
+
+        @keyframes float {
+        0% {
+            transform: translate(0, 0);
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(calc(100vw - 50px), calc(100vh - 50px));
+            opacity: 0;
+        }
+        }
+
         @media (max-width: 540px) {
             #blog-content > .container {
                 width: auto;
@@ -156,14 +178,14 @@
 
             <div class="content" id="24040801">
                 <h2>04.10.24</h2>
-                <span class="tag"><span class="author">希比</span></span> <span class="tag">愁</span>
+                <span class="tag"><span class="author">希比</span></span> <span class="tag">🎂</span>
                 <p>
                     03:36 PM
                     <br />
                     佳比太忙了！怎么办呢～
                     <br />
                     要不今天就把「jiabi.top」送给佳比吧！
-                    偷偷写个 <span class="special" id="birthdaylink">Happy Birthday</span> 在这里～
+                    偷偷写个 <span class="special" id="birthday">Happy Birthday</span> 在这里～
                 </p>
             </div>
 
@@ -370,6 +392,39 @@
     });
 </script>
 
-
+<!-- birthday -->
+<script>
+    const birthday = document.getElementById('birthday');
+ 
+ birthday.addEventListener('click', () => {
+   // Create 10 birthdaycakes
+   for (let i = 0; i < 10; i++) {
+     const birthdaycake = document.createElement('div');
+     birthdaycake.classList.add('birthdaycake');
+     birthdaycake.innerHTML = '🎂';
+ 
+     // Set a random starting position for the birthdaycake
+     birthdaycake.style.left = `${Math.random() * 100}vw`;
+     birthdaycake.style.top = `${Math.random() * 100}vh`;
+ 
+     // Add the birthdaycake to the page
+     document.body.appendChild(birthdaycake);
+ 
+     // Animate the birthdaycake
+     birthdaycake.animate([
+       { transform: 'translate(0, 0)' },
+       { transform: `translate(calc(100vw - 50px), calc(100vh - 50px))` }
+     ], {
+       duration: 4000,
+       easing: 'linear'
+     });
+ 
+     // Remove the birthdaycake after 2 seconds
+     setTimeout(() => {
+       birthdaycake.remove();
+     }, 4000);
+   }
+ });
+ </script>
 
 </html>
