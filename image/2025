@@ -1,6 +1,1 @@
-project/
- └─image/
-     └─2025/
-         ├─01.webp
-         ├─02.webp
-         └─……
+image/2025/.gitkeep
